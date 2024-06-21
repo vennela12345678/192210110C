@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+#include <cmath> 
+int main() {
+    double number;
+    cout << "Enter a number: ";
+    cin >> number;
+    if (number < 0) {
+        cout << "Square root of a negative number is not real." ;
+    } else {
+        double squareRoot = sqrt(number);
+        std::cout << "Square root of " << number << " is: " << squareRoot ;
+    }
+    
+    return 0;
+}
