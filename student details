@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+
+	int num,i;
+	cout<<"enter the number of students:";
+	cin>>num;
+	for(i=0;i<num;i++)
+	{
+		string name;
+		int regno,mark1,mark2,mark3,avg;
+		cout<<"enter name:";
+		cin>>name;
+		cout<<"regno:";
+		cin>>regno;
+		cout<<"mark1:";
+		cin>>mark1;
+		cout<<"mark2:";
+		cin>>mark2;
+		cout<<"mark3:";
+		cin>>mark3;
+		avg=(mark1+mark2+mark3)/3;
+		cout<<"average:"<<avg<<"\n";
+		if(avg>90)
+		{
+			cout<<"S grade";
+		}
+		else if(avg>80)
+		{
+			cout<<"A grade";
+		}
+		else if(avg>70)
+		{
+			cout<<"C grade";
+		}
+ 		else if(avg>60)
+		{
+			cout<<"E grade";
+		}
+		else
+		{
+			cout<<"fail";
+		}
+		cout<<"\n";
+	}
+	return 0;
+
+}
