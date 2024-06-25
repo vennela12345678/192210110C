@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+	char senior_citizen;
+	int p,t,r,SI;
+	cout<<"enter a p.";
+	cin>>p;
+	cout<<"enter a .t";
+	cin>>t;
+	if(senior_citizen='yes'){
+		r=12;
+		SI=(p*t*r)/100;
+	}
+	else{
+		r=10;
+		SI=(p*t*r)/100;
+	}
+	cout<<"simple intrest:"<<SI;
+	return 0;	
+}
