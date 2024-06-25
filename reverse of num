@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+class ReverseNumber {
+private:
+    int number;
+public:
+    ReverseNumber() : number(0) {}
+    ReverseNumber(int num) : number(num) {
+        displayReversed();
+    }
+    void displayReversed() const {
+        int reversed = 0, temp = number;
+        while (temp != 0) {
+            reversed = reversed * 10 + temp % 10;
+            temp /= 10;
+        }
+        cout << "The reverse of " << number << " is " << reversed << endl;
+    }
+};
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    ReverseNumber revNum(n);
+
+    return 0;
+}
