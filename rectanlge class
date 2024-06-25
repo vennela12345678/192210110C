@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+class Rectangle {
+private:
+    double length;
+    double breadth;
+
+public:
+    Rectangle() : length(0), breadth(0) {}
+    Rectangle(double len, double brd) : length(len), breadth(brd) {}
+    Rectangle(double num) : length(num), breadth(num) {}
+    void calculateArea() const {
+        double area = length * breadth;
+        cout << "Area of rectangle with length " << length << " and breadth " << breadth << " is: " << area << endl;
+    }
+};
+
+int main() {
+    Rectangle rect1;     
+    Rectangle rect2(5.0, 2.0);  
+    Rectangle rect3(4.0);   
+    rect1.calculateArea();
+    rect2.calculateArea();
+    rect3.calculateArea();
+
+    return 0;
+}
