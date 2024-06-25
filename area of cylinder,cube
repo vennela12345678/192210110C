@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+class Area {
+public:
+    void calculateArea(int length, int breadth) {
+        int area = length * breadth;
+        cout << "Area of rectangle with length " << length << " and breadth " << breadth << " is: " << area << endl;
+    }
+    void calculateArea(int side) {
+        int area = side * side;
+        cout << "Area of square with side " << side << " is: " << area << endl;
+    }
+};
+
+int main() {
+    Area obj;
+    obj.calculateArea(5, 4); 
+    obj.calculateArea(5); 
+    return 0;
+}
