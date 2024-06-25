@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+class Employee {
+private:
+    std::string name;
+    int id;
+    double salary;
+public:
+    Employee() {}  
+
+    Employee(std::string n, int i, double s) : name(n), id(i), salary(s) {}
+
+    void getData() {
+        std::cout << "Enter name: ";
+        std::cin >> name;
+        std::cout << "Enter ID: ";
+        std::cin >> id;
+        std::cout << "Enter salary: ";
+        std::cin >> salary;
+    }
+
+    void displayData() {
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "ID: " << id << std::endl;
+        std::cout << "Salary: " << salary << std::endl;
+    }
+};
+
+int main() {
+    const int numEmployees = 3;
+    Employee employees[numEmployees];
+    for (int i = 0; i < numEmployees; ++i) {
+        std::cout << "Enter details for employee " << (i + 1) << ":" << std::endl;
+        employees[i].getData();
+    }
+    std::cout << "\nEmployee Details:" << std::endl;
+    for (int i = 0; i < numEmployees; ++i) {
+        std::cout << "Employee " << (i + 1) << ":" << std::endl;
+        employees[i].displayData();
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
