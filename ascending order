@@ -1,0 +1,42 @@
+#include <iostream>
+
+// Function to swap two integers
+void swap(int* ptr1, int* ptr2) {
+    int temp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = temp;
+}
+
+// Function to perform bubble sort using pointers
+void bubbleSort(int* arr, int size) {
+    for (int i = 0; i < size - 1; ++i) {
+        for (int j = 0; j < size - i - 1; ++j) {
+            if (*(arr + j) > *(arr + j + 1)) {
+                swap(arr + j, arr + j + 1);
+            }
+        }
+    }
+}
+
+// Function to display array elements
+void displayArray(int* arr, int size) {
+    for (int i = 0; i < size; ++i) {
+        std::cout << *(arr + i) << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    std::cout << "Original array:" << std::endl;
+    displayArray(arr, size);
+
+    bubbleSort(arr, size);
+
+    std::cout << "Sorted array in ascending order:" << std::endl;
+    displayArray(arr, size);
+
+    return 0;
+}
