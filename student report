@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+
+// Base class for Student
+class Student {
+protected:
+    std::string name;
+    int rollNumber;
+    std::string department;
+public:
+    // Constructor
+    Student(const std::string& n, int roll, const std::string& dept)
+        : name(n), rollNumber(roll), department(dept) {}
+
+    // Display basic student information
+    void displayStudentInfo() const {
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "Roll Number: " << rollNumber << std::endl;
+        std::cout << "Department: " << department << std::endl;
+    }
+};
+
+// Derived class for StudentReport inheriting from Student
+class StudentReport : public Student {
+private:
+    float marks;
+    std::string grade;
+public:
+    StudentReport(const std::string& n, int roll, const std::string& dept, float m, const std::string& g)
+        : Student(n, roll, dept), marks(m), grade(g) {}
+
+    // Display student report including academic details
+    void displayStudentReport() const {
+        displayStudentInfo(); // Accessing base class function
+        std::cout << "Marks: " << marks << std::endl;
+        std::cout << "Grade: " << grade << std::endl;
+    }
+};
+
+int main() {
+    // Create an object of derived class
+    StudentReport student1("Alice", 101, "Computer Science", 85.5, "A");
+
+    // Display student report
+    std::cout << "Student Report:" << std::endl;
+    student1.displayStudentReport();
+
+    return 0;
+}
