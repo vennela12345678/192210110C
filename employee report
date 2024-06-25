@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+
+// Base class for Employee
+class Employee {
+protected:
+    std::string name;
+    int employeeId;
+public:
+    Employee(const std::string& n, int id) : name(n), employeeId(id) {}
+
+    void displayDetails() const {
+        std::cout << "Employee ID: " << employeeId << std::endl;
+        std::cout << "Name: " << name << std::endl;
+    }
+};
+
+// Derived class for Regular Employee inheriting from Employee
+class RegularEmployee : public Employee {
+protected:
+    double salary;
+public:
+    RegularEmployee(const std::string& n, int id, double sal) : Employee(n, id), salary(sal) {}
+
+    void displaySalary() const {
+        std::cout << "Salary: $" << salary << " (Regular Employee)" << std::endl;
+    }
+};
+
+// Derived class for Contract Employee inheriting from Employee
+class ContractEmployee : public Employee {
+protected:
+    double hourlyRate;
+    int hoursWorked;
+public:
+    ContractEmployee(const std::string& n, int id, double rate, int hours)
+        : Employee(n, id), hourlyRate(rate), hoursWorked(hours) {}
+
+    void calculateSalary() {
+        double salary = hourlyRate * hoursWorked;
+        std::cout << "Salary: $" << salary << " (Contract Employee)" << std::endl;
+    }
+};
+
+// Derived class using multiple inheritance from RegularEmployee and ContractEmployee
+class HybridEmployee : public RegularEmployee, public ContractEmployee {
+public:
+    HybridEmployee(const std::string& n, int id, double sal, double rate, int hours)
+        : RegularEmployee(n, id, sal), ContractEmployee(n, id, rate, hours) {}
+
+    // Override displayDetails to avoid ambiguity
+    void displayDetails() const {
+        Employee::displayDetails(); // Accessing displayDetails function of base class Employee
+    }
+};
+
+int main() {
+    // Example usage of HybridEmployee
+    HybridEmployee emp("John Doe", 1001, 5000.0, 25.0, 40);
+
+    std::cout << "Employee Details:" << std::endl;
+    emp.displayDetails();
+    emp.displaySalary(); // Accessing displaySalary function of base
