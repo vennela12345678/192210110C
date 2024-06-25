@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+class Student {
+private:
+    std::string name;
+    int age;
+    std::string studentID;
+    std::string grade;
+
+public:
+    void readDetails() {
+        std::cout << "Enter student name: ";
+        std::getline(std::cin, name);
+
+        std::cout << "Enter student age: ";
+        std::cin >> age;
+        std::cin.ignore();
+        std::cout << "Enter student ID: ";
+        std::getline(std::cin, studentID);
+
+        std::cout << "Enter student grade: ";
+        std::getline(std::cin, grade);
+    }
+
+    void printDetails() const {
+        std::cout << "\nStudent Details:\n";
+        std::cout << "Name: " << name << "\n";
+        std::cout << "Age: " << age << "\n";
+        std::cout << "Student ID: " << studentID << "\n";
+        std::cout << "Grade: " << grade << "\n";
+    }
+};
+int main() {
+    Student student;
+    student.readDetails();
+    student.printDetails();
+    return 0;
+}
