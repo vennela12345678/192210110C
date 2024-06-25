@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <string>
+class BankAccount {
+protected:
+    std::string accountNumber;
+    double balance;
+public:
+    BankAccount(const std::string& accNum, double initialBalance) 
+        : accountNumber(accNum), balance(initialBalance) {}
+
+    virtual void deposit(double amount) {
+        balance += amount;
+        std::cout << "Deposited $" << amount << " into account " << accountNumber << std::endl;
+    }
+
+    virtual void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            std::cout << "Withdrawn $" << amount << " from account " << accountNumber << std::endl;
+        } else {
+            std::cout << "Insufficient balance in account " << accountNumber << std::endl;
+        }
+    }
+
+    virtual void display() const {
+        std::cout << "Account Number: " << accountNumber << ", Balance: $" << balance << std::endl;
+    }
+};
+class Customer {
+protected:
+    std::string name;
+    std::string address;
+public:
+    Customer(const std::string& n, const std::string& addr) : name(n), address(addr) {}
+
+    void display() const {
+        std::cout << "Customer Name: " << name << ", Address: " << address << std::endl;
+    }
+};
