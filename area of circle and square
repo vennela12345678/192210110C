@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cmath>
+class Shape {
+public:
+    virtual double area() = 0;  
+};
+class Square : public Shape {
+    double side;
+public:
+    Square(double s) : side(s) {}
+    double area() override { return side * side; }
+};
+
+class Circle : public Shape {
+    double radius;
+public:
+    Circle(double r) : radius(r) {}
+    double area() override { return M_PI * radius * radius; }
+};
+
+int main() {
+    Shape* shapes[] = { new Square(4.0), new Circle(3.0) };
+    std::cout << "Area of Square: " << shapes[0]->area() << std::endl;
+    std::cout << "Area of Circle: " << shapes[1]->area() << std::endl;
+    delete shapes[0];
+    delete shapes[1];
+    return 0;
+}
