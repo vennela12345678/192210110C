@@ -1,0 +1,32 @@
+#include <iostream>
+class ObjectCounter {
+private:
+    static int objectCount;
+public:
+    ObjectCounter() {
+        objectCount++;
+    }
+    ~ObjectCounter() {
+        objectCount--;
+    }
+    static int getObjectCount() {
+        return objectCount;
+    }
+};
+int ObjectCounter::objectCount = 0;
+
+int main() {
+    std::cout << "Initial object count: " << ObjectCounter::getObjectCount() << std::endl;
+    ObjectCounter obj1;
+    std::cout << "Object count after creating obj1: " << ObjectCounter::getObjectCount() << std::endl;
+
+    ObjectCounter obj2;
+    std::cout << "Object count after creating obj2: " << ObjectCounter::getObjectCount() << std::endl;
+
+    {
+        ObjectCounter obj3;
+        std::cout << "Object count after creating obj3: " << ObjectCounter::getObjectCount() << std::endl;
+    }
+    std::cout << "Object count after obj3 is destroyed: " << ObjectCounter::getObjectCount() << std::endl;
+    return 0;
+}
