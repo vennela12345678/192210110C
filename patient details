@@ -1,0 +1,100 @@
+#include <iostream>
+#include <string>
+
+// Base class for Patient
+class Patient {
+protected:
+    std::string name;
+    int age;
+    std::string gender;
+public:
+    // Constructor
+    Patient(const std::string& n, int a, const std::string& g)
+        : name(n), age(a), gender(g) {}
+
+    // Function to display patient details
+    void displayDetails() const {
+        std::cout << "Patient Name: " << name << std::endl;
+        std::cout << "Patient Age: " << age << std::endl;
+        std::cout << "Patient Gender: " << gender << std::endl;
+    }
+
+    // Virtual function for entering patient details
+    virtual void enterDetails() {
+        std::cout << "Enter Patient Name: ";
+        std::cin >> name;
+        std::cout << "Enter Patient Age: ";
+        std::cin >> age;
+        std::cout << "Enter Patient Gender: ";
+        std::cin >> gender;
+    }
+};
+
+// Derived class for Inpatient inheriting from Patient
+class Inpatient : public Patient {
+private:
+    std::string admissionDate;
+    int roomNumber;
+public:
+    // Constructor
+    Inpatient(const std::string& n, int a, const std::string& g, const std::string& admDate, int room)
+        : Patient(n, a, g), admissionDate(admDate), roomNumber(room) {}
+
+    // Function to display inpatient details
+    void displayDetails() const {
+        Patient::displayDetails(); // Accessing displayDetails function of base class Patient
+        std::cout << "Admission Date: " << admissionDate << std::endl;
+        std::cout << "Room Number: " << roomNumber << std::endl;
+    }
+
+    // Overridden function to enter inpatient details
+    void enterDetails() override {
+        Patient::enterDetails(); // Accessing enterDetails function of base class Patient
+        std::cout << "Enter Admission Date: ";
+        std::cin >> admissionDate;
+        std::cout << "Enter Room Number: ";
+        std::cin >> roomNumber;
+    }
+};
+
+// Derived class for Outpatient inheriting from Patient
+class Outpatient : public Patient {
+private:
+    std::string appointmentDate;
+    std::string doctor;
+public:
+    // Constructor
+    Outpatient(const std::string& n, int a, const std::string& g, const std::string& appDate, const std::string& doc)
+        : Patient(n, a, g), appointmentDate(appDate), doctor(doc) {}
+
+    // Function to display outpatient details
+    void displayDetails() const {
+        Patient::displayDetails(); // Accessing displayDetails function of base class Patient
+        std::cout << "Appointment Date: " << appointmentDate << std::endl;
+        std::cout << "Doctor: " << doctor << std::endl;
+    }
+
+    // Overridden function to enter outpatient details
+    void enterDetails() override {
+        Patient::enterDetails(); // Accessing enterDetails function of base class Patient
+        std::cout << "Enter Appointment Date: ";
+        std::cin >> appointmentDate;
+        std::cout << "Enter Doctor's Name: ";
+        std::cin >> doctor;
+    }
+};
+
+int main() {
+    // Example usage
+    Inpatient inpatient("John Doe", 45, "Male", "2023-06-25", 101);
+    Outpatient outpatient("Alice Smith", 30, "Female", "2023-06-26", "Dr. Emily");
+
+    std::cout << "Inpatient Details:" << std::endl;
+    inpatient.displayDetails();
+    std::cout << std::endl;
+
+    std::cout << "Outpatient Details:" << std::endl;
+    outpatient.displayDetails();
+
+    return 0;
+}
