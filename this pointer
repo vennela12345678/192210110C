@@ -1,0 +1,16 @@
+#include <iostream>
+
+class Example {
+    int value;
+public:
+    Example(int value) : value(value) {}
+    void display() {
+        std::cout << "Value: " << this->value << std::endl;
+    }
+};
+
+int main() {
+    Example ex(10);
+    ex.display();
+    return 0;
+}
