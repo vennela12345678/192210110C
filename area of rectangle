@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+class AreaCalculator {
+public:
+    AreaCalculator(double radius) {
+        cout << "Area of Circle: " << 3.14159 * radius * radius << endl;
+    }
+    AreaCalculator(double length, double width) {
+        cout << "Area of Rectangle: " << length * width << endl;
+    }
+    AreaCalculator(double base, double height, int) {
+        cout << "Area of Triangle: " << 0.5 * base * height << endl;
+    }
+};
+int main() {
+    double radius, length, width, base, height;
+
+    cout << "Enter radius of the circle: ";
+    cin >> radius;
+    AreaCalculator circle(radius);
+    cout << "Enter length and width of the rectangle: ";
+    cin >> length >> width;
+    AreaCalculator rectangle(length, width);
+    cout << "Enter base and height of the triangle: ";
+    cin >> base >> height;
+    AreaCalculator triangle(base, height, 0);
+
+    return 0;
+}
